@@ -14,6 +14,7 @@
 #import "Post.h"
 #import "PostCell.h"
 #import "PFFileObject.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface HomeTimelineViewController ()
 
@@ -99,6 +100,8 @@
     
     cell.userNameLabel.text = post.userID;
     cell.captionLabel.text = post.caption;
+    NSURL *url = [NSURL URLWithString:post.image.url];
+    [cell.postImageView setImageWithURL:url];
     
     
     cell.likeLabel.text = [NSString stringWithFormat:@"%i likes",[post.likeCount intValue]];
@@ -126,6 +129,7 @@
         
     }
 }
+
 
 
 

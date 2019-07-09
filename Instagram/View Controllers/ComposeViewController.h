@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol ComposeViewControllerDelegate
 
-- (void)didShare;
+- (void)didShare:(Post *)post;
 
 @end
 
