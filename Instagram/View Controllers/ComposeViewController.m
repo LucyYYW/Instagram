@@ -7,6 +7,7 @@
 //
 
 #import "ComposeViewController.h"
+#import "HomeTimelineViewController.h"
 
 @interface ComposeViewController ()
 
@@ -17,12 +18,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
 }
 - (IBAction)onTapCancel:(id)sender {
+    [self dismissViewControllerAnimated:true completion: nil];
 }
 
 
 - (IBAction)onTapPost:(id)sender {
+    
+    [self dismissViewControllerAnimated:true completion: nil];
 }
 
 /*

@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ComposeViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeTimelineViewController : UIViewController 
+@interface HomeTimelineViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ComposeViewControllerDelegate>
+
+@property (strong, nonatomic) UIImage *originalImage;
+@property (strong, nonatomic) UIImage *editedImage;
 
 @end
 
