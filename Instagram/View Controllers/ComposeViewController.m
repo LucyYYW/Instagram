@@ -8,8 +8,9 @@
 
 #import "ComposeViewController.h"
 #import "HomeTimelineViewController.h"
+#import "UITextView+Placeholder.h"
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
 
 @end
 
@@ -19,6 +20,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.photoVIew.image = self.photo;
+    
+    self.wordView.delegate = self;
+    // Do any additional setup after loading the view.
+    self.wordView.placeholder = @"Write a caption...";
+    self.wordView.placeholderColor = [UIColor lightGrayColor]; // optional
     
     
 }
