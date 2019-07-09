@@ -21,6 +21,7 @@
 		B9DA10A022D4098100D0ED5C /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA109F22D4098100D0ED5C /* InitialViewController.m */; };
 		B9DA10A322D40A5F00D0ED5C /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA10A222D40A5F00D0ED5C /* SignUpViewController.m */; };
 		B9DA10A622D4137000D0ED5C /* HomeTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA10A522D4137000D0ED5C /* HomeTimelineViewController.m */; };
+		B9DA10A922D446C300D0ED5C /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA10A822D446C300D0ED5C /* ComposeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		B9DA10A222D40A5F00D0ED5C /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		B9DA10A422D4137000D0ED5C /* HomeTimelineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTimelineViewController.h; sourceTree = "<group>"; };
 		B9DA10A522D4137000D0ED5C /* HomeTimelineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTimelineViewController.m; sourceTree = "<group>"; };
+		B9DA10A722D446C300D0ED5C /* ComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		B9DA10A822D446C300D0ED5C /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		C93590F06A5D4282C43FBACC /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		CE22ACBA4B6DA961E74D8567 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 		D3B68F324032055C2F4C52DA /* Pods-InstagramTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramTests.debug.xcconfig"; path = "Target Support Files/Pods-InstagramTests/Pods-InstagramTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 				B9DA10A222D40A5F00D0ED5C /* SignUpViewController.m */,
 				B9DA10A422D4137000D0ED5C /* HomeTimelineViewController.h */,
 				B9DA10A522D4137000D0ED5C /* HomeTimelineViewController.m */,
+				B9DA10A722D446C300D0ED5C /* ComposeViewController.h */,
+				B9DA10A822D446C300D0ED5C /* ComposeViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				B9DA10A322D40A5F00D0ED5C /* SignUpViewController.m in Sources */,
 				B9DA10A622D4137000D0ED5C /* HomeTimelineViewController.m in Sources */,
 				B9DA106A22D3F95700D0ED5C /* AppDelegate.m in Sources */,
+				B9DA10A922D446C300D0ED5C /* ComposeViewController.m in Sources */,
 				B9DA109D22D4049200D0ED5C /* LoginViewController.m in Sources */,
 				B9DA10A022D4098100D0ED5C /* InitialViewController.m in Sources */,
 			);

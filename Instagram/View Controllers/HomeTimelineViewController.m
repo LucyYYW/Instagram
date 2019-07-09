@@ -31,6 +31,9 @@
         appDelegate.window.rootViewController = loginViewController;
     }];
 }
+- (IBAction)onTapPost:(id)sender {
+    
+}
 
 /*
 #pragma mark - Navigation
