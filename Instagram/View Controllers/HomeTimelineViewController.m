@@ -19,6 +19,7 @@
 @interface HomeTimelineViewController ()
 
 @property (nonatomic, strong) NSMutableArray *posts;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -30,6 +31,10 @@
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
     [self fetchLatest20Posts];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchLatest20Posts) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     
 }
 
@@ -45,9 +50,11 @@
             // do something with the array of object returned by the call
             self.posts = [posts mutableCopy];
             [self.tableView reloadData];
+            
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
