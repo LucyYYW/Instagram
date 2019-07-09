@@ -30,11 +30,13 @@
 }
 
 - (IBAction)didSignUp:(id)sender {
+    
     [self registerUser];
 }
 
 
 - (void)registerUser {
+    
     // initialize a user object
     PFUser *newUser = [PFUser user];
     

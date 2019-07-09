@@ -16,7 +16,11 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
+        configuration.applicationId = @"lucyins";
+        configuration.server = @"http://lucyins.herokuapp.com/parse";
+    }];
+    [Parse initializeWithConfiguration:config];
     // Code to initialize Parse
     // (See above section 'Parse `initializeWithConfiguration` vs `setApplicationId`', if you have not already set it up)
     
