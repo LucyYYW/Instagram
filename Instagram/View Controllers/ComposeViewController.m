@@ -9,6 +9,7 @@
 #import "ComposeViewController.h"
 #import "HomeTimelineViewController.h"
 #import "UITextView+Placeholder.h"
+#import "Post.h"
 
 @interface ComposeViewController () <UITextViewDelegate>
 
@@ -28,13 +29,21 @@
     
     
 }
+
 - (IBAction)onTapCancel:(id)sender {
     [self dismissViewControllerAnimated:true completion: nil];
 }
 
 
 - (IBAction)onTapPost:(id)sender {
-    
+    [Post postUserImage:self.photo withCaption:self.wordView.text withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
+        if (error != nil) {
+            NSLog(@"User post failed: %@", error.localizedDescription);
+        } else {
+            NSLog(@"User posted successfully");
+            [self.delegate didShare];
+        }
+    }];
     [self dismissViewControllerAnimated:true completion: nil];
 }
 
