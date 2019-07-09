@@ -36,12 +36,12 @@
 
 
 - (IBAction)onTapPost:(id)sender {
-    Post *newPost = [Post postUserImage:self.photo withCaption:self.wordView.text withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
+    [Post postUserImage:self.photo withCaption:self.wordView.text withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
         if (error != nil) {
             NSLog(@"User post failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User posted successfully");
-            [self.delegate didShare: newPost];
+            [self.delegate didShare];
         }
     }];
     [self dismissViewControllerAnimated:true completion: nil];

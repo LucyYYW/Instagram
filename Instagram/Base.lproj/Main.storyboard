@@ -290,13 +290,13 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="captionLabel" destination="1Hy-qC-W8c" id="Ccq-6k-O4h"/>
-                                            <outlet property="commentButton" destination="byC-ZY-T2C" id="jQq-iq-NuJ"/>
-                                            <outlet property="likeButton" destination="8Zk-l6-iWq" id="Fw2-T1-OcE"/>
-                                            <outlet property="likeLabel" destination="Pr0-bo-lPZ" id="fmS-53-CrQ"/>
-                                            <outlet property="postImageView" destination="rJs-FU-zWF" id="iEC-3o-oE4"/>
-                                            <outlet property="profileImageView" destination="H7h-Z9-nRf" id="R86-KZ-1jA"/>
-                                            <outlet property="userNameLabel" destination="moW-pc-UU4" id="3ac-XY-OMC"/>
+                                            <outlet property="captionLabel" destination="1Hy-qC-W8c" id="N7l-8J-xSa"/>
+                                            <outlet property="commentButton" destination="byC-ZY-T2C" id="fxy-DG-PO9"/>
+                                            <outlet property="likeButton" destination="8Zk-l6-iWq" id="mUN-7f-S5J"/>
+                                            <outlet property="likeLabel" destination="Pr0-bo-lPZ" id="IW7-vr-ryG"/>
+                                            <outlet property="postImageView" destination="rJs-FU-zWF" id="p9S-su-VBo"/>
+                                            <outlet property="profileImageView" destination="H7h-Z9-nRf" id="nFf-LG-n0L"/>
+                                            <outlet property="userNameLabel" destination="moW-pc-UU4" id="KCX-nU-Qvn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -321,7 +321,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="uhV-iC-PyX" id="Faf-A8-BPY"/>
+                        <outlet property="tableView" destination="uhV-iC-PyX" id="wme-cE-qVb"/>
                         <segue destination="iUT-AW-Plr" kind="modal" identifier="compose" id="ebG-iZ-c0t"/>
                     </connections>
                 </viewController>

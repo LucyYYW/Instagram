@@ -26,9 +26,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     // Do any additional setup after loading the view.
+    [self fetchLatest20Posts];
+    
 }
 
+- (void) fetchLatest20Posts {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    //[query whereKey:@"likesCount" greaterThan:@100];
+    query.limit = 20;
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.posts = [posts mutableCopy];
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
 
 
 - (IBAction)didTapLogout:(id)sender {
@@ -87,8 +108,9 @@
     return newImage;
 }
 
-- (void) didShare: (Post *) post{
-    [self.posts insertObject: post atIndex:0];
+- (void) didShare{
+    //[self.posts insertObject: post atIndex:0];
+    [self fetchLatest20Posts];
     [self.tableView reloadData];
     
 }
