@@ -55,11 +55,12 @@
     // Get the image captured by the UIImagePickerController
     self.originalImage = info[UIImagePickerControllerOriginalImage];
     self.editedImage = info[UIImagePickerControllerEditedImage];
+    //NSLog(self.editedImage);
     
     // Do something with the images (based on your use case)
     
     // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:^{[self performSegueWithIdentifier:@"compose" sender:nil];}];
+    [self dismissViewControllerAnimated:YES completion:^{[self performSegueWithIdentifier:@"compose" sender:self];}];
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -87,9 +88,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqual:@"compose"]) {
-        ComposeViewController *composeController = [segue destinationViewController];
-        composeController.delegate = self;
-        [composeController.photoVIew setImage:self.editedImage];
+        UINavigationController *navigation = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigation.topViewController;
+        composeController.delegate = sender;
+        composeController.photo = self.editedImage;
+        
     }
 }
 

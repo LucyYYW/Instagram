@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *photoVIew;
 @property (weak, nonatomic) IBOutlet UITextView *wordView;
 @property (nonatomic, weak) id<ComposeViewControllerDelegate> delegate;
+@property (strong, nonatomic) UIImage *photo;
 @end
 
 NS_ASSUME_NONNULL_END
