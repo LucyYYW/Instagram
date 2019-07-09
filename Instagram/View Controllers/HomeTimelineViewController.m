@@ -11,10 +11,13 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "ComposeViewController.h"
+#import "Post.h"
+#import "PostCell.h"
+#import "PFFileObject.h"
 
 @interface HomeTimelineViewController ()
 
-@property (nonatomic, strong) NSArray *posts;
+@property (nonatomic, strong) NSMutableArray *posts;
 
 @end
 
@@ -60,9 +63,10 @@
     // Get the image captured by the UIImagePickerController
     self.originalImage = info[UIImagePickerControllerOriginalImage];
     self.editedImage = info[UIImagePickerControllerEditedImage];
-    //NSLog(self.editedImage);
+    
     
     // Do something with the images (based on your use case)
+    self.editedImage = [self resizeImage:self.editedImage withSize:CGSizeMake(400, 400)];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:^{[self performSegueWithIdentifier:@"compose" sender:self];}];
@@ -82,8 +86,30 @@
     return newImage;
 }
 
-- (void) didShare {
+- (void) didShare: (Post *) post{
+    [self.posts insertObject: post atIndex:0];
+    [self.tableView reloadData];
     
+}
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    Post *post = self.posts[indexPath.row];
+    cell.post = post;
+    
+    cell.userNameLabel.text = post.userID;
+    cell.captionLabel.text = post.caption;
+    
+    
+    cell.likeLabel.text = [NSString stringWithFormat:@"%i likes",[post.likeCount intValue]];
+     
+    
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.posts.count;
 }
 
 #pragma mark - Navigation

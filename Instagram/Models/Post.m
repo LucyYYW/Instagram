@@ -7,7 +7,7 @@
 //
 
 #import <Parse/Parse.h>
-//fgnndugvurnujbnbkgnfldnnfbbtjnek#import "PFImageView.h"
+#import "PFFileObject.h"
 #import "Post.h"
 @implementation Post
 

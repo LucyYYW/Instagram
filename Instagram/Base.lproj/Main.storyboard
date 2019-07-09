@@ -236,14 +236,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button autoresizesSubviews="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tY-vA-h7c">
-                                <rect key="frame" x="153" y="609" width="68" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="post"/>
-                                <connections>
-                                    <action selector="onTapPost:" destination="sd1-Mt-Kir" eventType="touchUpInside" id="UrO-hv-8kO"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uhV-iC-PyX">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -302,13 +294,21 @@
                                             <outlet property="commentButton" destination="byC-ZY-T2C" id="jQq-iq-NuJ"/>
                                             <outlet property="likeButton" destination="8Zk-l6-iWq" id="Fw2-T1-OcE"/>
                                             <outlet property="likeLabel" destination="Pr0-bo-lPZ" id="fmS-53-CrQ"/>
-                                            <outlet property="postImageView" destination="rJs-FU-zWF" id="f4j-FO-Fve"/>
-                                            <outlet property="profileImageView" destination="H7h-Z9-nRf" id="9rG-EQ-i6i"/>
+                                            <outlet property="postImageView" destination="rJs-FU-zWF" id="iEC-3o-oE4"/>
+                                            <outlet property="profileImageView" destination="H7h-Z9-nRf" id="R86-KZ-1jA"/>
                                             <outlet property="userNameLabel" destination="moW-pc-UU4" id="3ac-XY-OMC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button autoresizesSubviews="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tY-vA-h7c">
+                                <rect key="frame" x="153" y="609" width="68" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="post"/>
+                                <connections>
+                                    <action selector="onTapPost:" destination="sd1-Mt-Kir" eventType="touchUpInside" id="UrO-hv-8kO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ju8-yh-yFb"/>
@@ -321,6 +321,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="uhV-iC-PyX" id="Faf-A8-BPY"/>
                         <segue destination="iUT-AW-Plr" kind="modal" identifier="compose" id="ebG-iZ-c0t"/>
                     </connections>
                 </viewController>
