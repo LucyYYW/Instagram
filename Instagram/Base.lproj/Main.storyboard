@@ -615,6 +615,16 @@
                         <viewLayoutGuide key="safeArea" id="jgb-h7-WA0"/>
                     </view>
                     <navigationItem key="navigationItem" id="7me-qg-ERA"/>
+                    <connections>
+                        <outlet property="captionLabel" destination="yH6-0X-ak2" id="cUe-gv-22g"/>
+                        <outlet property="commentButton" destination="AoD-MM-Q20" id="C7z-hW-HeU"/>
+                        <outlet property="dateLabel" destination="pVd-OR-vfE" id="5Y5-HT-IYb"/>
+                        <outlet property="likeButton" destination="aOa-Ju-U5n" id="uKG-VD-O4a"/>
+                        <outlet property="likeLabel" destination="L64-t9-muf" id="lZt-se-ioY"/>
+                        <outlet property="postImageView" destination="fgc-eb-FI4" id="aU2-Lw-uVO"/>
+                        <outlet property="profileImageView" destination="2CO-BK-uRX" id="9WS-gg-14r"/>
+                        <outlet property="userNameLabel" destination="CFl-pl-TKN" id="K44-1M-CGd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25I-eB-Vdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
