@@ -33,6 +33,9 @@
     
     [self registerUser];
 }
+- (IBAction)didNeedLogIn:(id)sender {
+    [self performSegueWithIdentifier:@"signuplogin" sender:nil];
+}
 
 
 - (void)registerUser {
