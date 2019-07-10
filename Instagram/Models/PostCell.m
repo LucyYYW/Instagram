@@ -20,5 +20,7 @@
     // Configure the view for the selected state
     
 }
+- (IBAction)onTapDetails:(id)sender {
+}
 
 @end
