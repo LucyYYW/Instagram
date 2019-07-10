@@ -34,6 +34,10 @@
     self.captionLabel.text = self.post.caption;
     
     self.likeLabel.text = [NSString stringWithFormat:@"%i likes",[self.post.likeCount intValue]];
+    
+    PFFileObject *userProfileFile = self.post.author[@"profileImage"];
+    NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
+    [self.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
      
 }
 

@@ -65,6 +65,7 @@ InfiniteScrollActivityView* loadingMoreView;
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     [query includeKey:@"createdAt"];
+    
     //[query whereKey:@"likesCount" greaterThan:@100];
     query.limit = 20;
     
@@ -157,6 +158,10 @@ InfiniteScrollActivityView* loadingMoreView;
     cell.captionLabel.text = post.caption;
     NSURL *url = [NSURL URLWithString:post.image.url];
     [cell.postImageView setImageWithURL:url];
+    
+    PFFileObject *userProfileFile = post.author[@"profileImage"];
+    NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
+    [cell.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
     
     
     cell.likeLabel.text = [NSString stringWithFormat:@"%i likes",[post.likeCount intValue]];
