@@ -9,6 +9,8 @@
 #import "MyProfileViewController.h"
 
 @interface MyProfileViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
 @end
 
@@ -17,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 - (IBAction)onEditProfile:(id)sender {
     [self performSegueWithIdentifier:@"editProfile" sender:nil];
