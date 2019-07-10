@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 #import <Parse/Parse.h>
+#import "Post.h"
 
 
 @interface SignUpViewController ()
@@ -72,8 +73,10 @@
             NSLog(@"Error: %@", error.localizedDescription);
         } else {
             NSLog(@"User registered successfully");
-            
-            // manually segue to logged in view
+            PFUser *user = [PFUser currentUser];
+            user[@"profileImage"] = [Post getPFFileFromImage:[UIImage imageNamed:@"profilePlaceholder"] withName:@"profileImage"];
+            [user saveInBackground];
+            //manually segue to logged in view
             [self performSegueWithIdentifier:@"signuplogin" sender:nil];
         }
     }];

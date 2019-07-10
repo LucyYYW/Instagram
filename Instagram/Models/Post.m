@@ -26,7 +26,7 @@
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Post *newPost = [Post new];
-    newPost.image = [self getPFFileFromImage:image];
+    newPost.image = [self getPFFileFromImage:image withName:@"image"];
     newPost.author = [PFUser currentUser];
     newPost.caption = caption;
     newPost.likeCount = @(0);
@@ -36,7 +36,7 @@
     //return newPost;
 }
 
-+ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
++ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image withName: (NSString* _Nullable)name {
     
     // check if image is not nil
     if (!image) {
@@ -48,8 +48,8 @@
     if (!imageData) {
         return nil;
     }
-    
-    return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+    NSString *imageName = [NSString stringWithFormat:@"%@.png", name];
+    return [PFFileObject fileObjectWithName:imageName data:imageData];
 }
 
 @end

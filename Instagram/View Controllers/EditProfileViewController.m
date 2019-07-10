@@ -10,6 +10,8 @@
 
 @interface EditProfileViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *userNameField;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @end
 
 @implementation EditProfileViewController
@@ -17,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+- (IBAction)onChangeProfieImage:(id)sender {
 }
 
 /*
