@@ -88,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wordlogo" translatesAutoresizingMaskIntoConstraints="NO" id="IMB-u9-Ze0">
-                                <rect key="frame" x="37.5" y="125.5" width="300" height="16"/>
+                                <rect key="frame" x="37.5" y="69" width="300.00000000000011" height="129"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eBx-Cv-fHq">
                                 <rect key="frame" x="75" y="251.5" width="225" height="31"/>
@@ -202,7 +202,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wordlogo" translatesAutoresizingMaskIntoConstraints="NO" id="xSw-GY-hQG">
-                                <rect key="frame" x="37.5" y="125.5" width="300" height="16"/>
+                                <rect key="frame" x="37.5" y="69" width="300.00000000000011" height="129"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kws-NQ-pui">
                                 <rect key="frame" x="75" y="251.5" width="225" height="31"/>
@@ -515,8 +515,8 @@
         <!--Home-->
         <scene sceneID="WKE-Y4-YnY">
             <objects>
-                <navigationController storyboardIdentifier="HomeTimelineViewController" automaticallyAdjustsScrollViewInsets="NO" id="lSR-TG-Xgk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="bHM-wp-btF"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSR-TG-Xgk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home-icon" id="bHM-wp-btF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xBb-oB-tmQ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -579,7 +579,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="6uA-id-7In">
             <objects>
-                <tabBarController id="Scd-ru-K8k" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTimelineViewController" id="Scd-ru-K8k" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jPb-dv-LX0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -587,6 +587,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="lSR-TG-Xgk" kind="relationship" relationship="viewControllers" id="HIM-C0-32X"/>
+                        <segue destination="E1N-h0-dwU" kind="relationship" relationship="viewControllers" id="eEA-TB-09N"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAH-La-CD3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -782,10 +783,11 @@
             </objects>
             <point key="canvasLocation" x="1832.8" y="4715.8920539730143"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="DsX-mE-p8g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="E1N-h0-dwU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="profile_tab" id="Eu0-7l-ClB"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VyA-76-lue">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -806,8 +808,10 @@
         <image name="close-icon" width="26" height="24"/>
         <image name="commentG" width="512" height="512"/>
         <image name="details1" width="225" height="225"/>
+        <image name="home-icon" width="30" height="30"/>
         <image name="likeWhite" width="225" height="225"/>
         <image name="post" width="225" height="225"/>
+        <image name="profile_tab" width="25" height="25"/>
         <image name="whitelogo2" width="1600" height="1200"/>
         <image name="wordlogo" width="389" height="129"/>
     </resources>
