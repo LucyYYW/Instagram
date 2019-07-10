@@ -23,7 +23,7 @@
 
 @property (nonatomic, strong) NSMutableArray *posts;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end
 
 @implementation HomeTimelineViewController 
@@ -41,6 +41,8 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchLatest20Posts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    [self.activityIndicator startAnimating];
     
 }
 
@@ -64,6 +66,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
         [self.refreshControl endRefreshing];
+        [self.activityIndicator stopAnimating];
     }];
 }
 
@@ -164,7 +167,9 @@
     
 }
 
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // Handle scroll behavior here
+}
 
 #pragma mark - Navigation
 

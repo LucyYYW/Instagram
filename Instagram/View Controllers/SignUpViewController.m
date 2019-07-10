@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
-
+@property (strong, nonatomic) UIAlertController *alert;
 @end
 
 @implementation SignUpViewController
@@ -22,7 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                   message:@"All fields should be non-empty!"
+                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+                                                         // handle response here.
+                                                     }];
+    // add the OK action to the alert controller
+    [self.alert addAction:okAction];
     
 }
 - (IBAction)tapOutside:(id)sender {
@@ -40,6 +49,13 @@
 
 - (void)registerUser {
     
+    if ([self.userNameField.text isEqualToString:@""] || [self.passwordField.text isEqualToString:@""] || [self.emailField.text isEqualToString:@""]) {
+        [self presentViewController:self.alert animated:YES completion:^{
+            // optional code for what happens after the alert controller has finished presenting
+        }];
+    }
+    
+    
     // initialize a user object
     PFUser *newUser = [PFUser user];
     
@@ -47,6 +63,8 @@
     newUser.username = self.userNameField.text;
     newUser.email = self.emailField.text;
     newUser.password = self.passwordField.text;
+    
+
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
