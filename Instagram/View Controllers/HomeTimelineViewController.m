@@ -31,6 +31,7 @@
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
     [self fetchLatest20Posts];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchLatest20Posts) forControlEvents:UIControlEventValueChanged];
@@ -41,6 +42,8 @@
 - (void) fetchLatest20Posts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
     //[query whereKey:@"likesCount" greaterThan:@100];
     query.limit = 20;
     
@@ -127,16 +130,21 @@
     Post *post = self.posts[indexPath.row];
     cell.post = post;
     
-    cell.userNameLabel.text = post.userID;
+    
+    cell.userNameLabel.text = post.author.username;
     cell.captionLabel.text = post.caption;
     NSURL *url = [NSURL URLWithString:post.image.url];
     [cell.postImageView setImageWithURL:url];
     
     
     cell.likeLabel.text = [NSString stringWithFormat:@"%i likes",[post.likeCount intValue]];
-     
+    //NSLog(cell.captionLabel.text);
     
-    
+    /*
+    cell.userNameLabel.text = @"sfdsjlfk";
+    cell.captionLabel.text = @"sfjsfl";
+    cell.likeLabel.text = @"safsjfl";
+    */
     return cell;
 }
 
@@ -144,6 +152,11 @@
     return self.posts.count;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

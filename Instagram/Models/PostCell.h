@@ -13,6 +13,7 @@
 
 #import "Post.h"
 
+@protocol PostCellDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
