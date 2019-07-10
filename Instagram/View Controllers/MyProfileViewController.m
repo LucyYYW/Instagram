@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)onEditProfile:(id)sender {
+    [self performSegueWithIdentifier:@"editProfile" sender:nil];
 }
 
 /*

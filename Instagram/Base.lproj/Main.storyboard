@@ -566,6 +566,9 @@
                         <viewLayoutGuide key="safeArea" id="tMq-uJ-oLV"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Profile" id="fBM-SM-ifN"/>
+                    <connections>
+                        <segue destination="q9g-q2-w90" kind="presentation" identifier="editProfile" id="mpN-3f-ExV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKv-aI-5A8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
