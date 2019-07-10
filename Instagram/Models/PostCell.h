@@ -9,11 +9,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-//#import "PFFileObject.h"
-
 #import "Post.h"
+#import "PostCell.h"
 
-@protocol PostCellDelegate;
+@protocol PostCellDetailsDelegate;
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,8 +28,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *likeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
-@property (strong, nonatomic) Post *post;
+@property (strong, nonatomic)  Post * _Nonnull post;
 
+@property (nonatomic, weak) id<PostCellDetailsDelegate> detailDelegate;
+@end
+
+@protocol PostCellDetailsDelegate
+-(void) didTapDetailsOnCell: (PostCell *) cell;
 @end
 
 NS_ASSUME_NONNULL_END

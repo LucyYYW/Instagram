@@ -20,7 +20,10 @@
     // Configure the view for the selected state
     
 }
-- (IBAction)onTapDetails:(id)sender {
+- (IBAction)onTapDetailsBtn:(id)sender {
+    [self.detailDelegate didTapDetailsOnCell:self];
+
 }
+
 
 @end

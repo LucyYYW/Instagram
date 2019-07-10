@@ -15,6 +15,9 @@
 #import "PostCell.h"
 #import "PFFileObject.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
+
+
 
 @interface HomeTimelineViewController ()
 
@@ -46,6 +49,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
+    [query includeKey:@"createdAt"];
     //[query whereKey:@"likesCount" greaterThan:@100];
     query.limit = 20;
     
@@ -140,13 +144,7 @@
     
     
     cell.likeLabel.text = [NSString stringWithFormat:@"%i likes",[post.likeCount intValue]];
-    //NSLog(cell.captionLabel.text);
-    
-    /*
-    cell.userNameLabel.text = @"sfdsjlfk";
-    cell.captionLabel.text = @"sfjsfl";
-    cell.likeLabel.text = @"safsjfl";
-    */
+    cell.detailDelegate = self;
     return cell;
 }
 
@@ -159,6 +157,15 @@
     // Return the number of sections.
     return 1;
 }
+
+-(void) didTapDetailsOnCell:(PostCell *)cell {
+    NSLog(@"receivetap");
+    [self performSegueWithIdentifier:@"viewDetails" sender:cell];
+    
+}
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -171,6 +178,12 @@
         composeController.delegate = sender;
         composeController.photo = self.editedImage;
         
+    } else if ([segue.identifier isEqual:@"viewDetails"]) {
+        DetailsViewController *detailsController = [segue destinationViewController];
+        PostCell *cell = sender;
+        detailsController.post = cell.post;
+        detailsController.postCell = cell;
+        detailsController.tableView = self.tableView;
     }
 }
 

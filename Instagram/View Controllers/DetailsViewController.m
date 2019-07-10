@@ -7,6 +7,7 @@
 //
 
 #import "DetailsViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DetailsViewController ()
 
@@ -17,6 +18,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setDetailsView];
+}
+
+- (void) setDetailsView {
+    //self.profileImageView
+    self.userNameLabel.text = self.post.author.username;
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"HH:mm  yyyy-MM-dd";
+    self.dateLabel.text = [formatter stringFromDate:self.post.createdAt];
+    
+    [self.postImageView setImageWithURL:[NSURL URLWithString:self.post.image.url]];
+    
+    self.captionLabel.text = self.post.caption;
+    
+    self.likeLabel.text = [NSString stringWithFormat:@"%i likes",[self.post.likeCount intValue]];
+     
 }
 
 /*

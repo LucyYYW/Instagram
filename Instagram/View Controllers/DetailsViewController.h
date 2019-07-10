@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
+#import "PostCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *likeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
+
+@property (strong, nonatomic) Post *post;
+@property (strong, nonatomic) PostCell *postCell;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 

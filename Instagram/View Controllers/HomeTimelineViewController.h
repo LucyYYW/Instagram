@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ComposeViewController.h"
 #import "PFFileObject.h"
+#import "PostCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeTimelineViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource>
+@interface HomeTimelineViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource,PostCellDetailsDelegate>
 
 @property (strong, nonatomic) UIImage *originalImage;
 @property (strong, nonatomic) UIImage *editedImage;
