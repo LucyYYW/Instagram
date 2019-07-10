@@ -16,6 +16,7 @@
 #import "PFFileObject.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
+#import "InfiniteScrollActivityView.h"
 
 
 
@@ -28,7 +29,8 @@
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @end
 
-@implementation HomeTimelineViewController 
+@implementation HomeTimelineViewController
+InfiniteScrollActivityView* loadingMoreView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +47,15 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     [self.activityIndicator startAnimating];
+    
+    CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+    loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
+    loadingMoreView.hidden = true;
+    [self.tableView addSubview:loadingMoreView];
+    
+    UIEdgeInsets insets = self.tableView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    self.tableView.contentInset = insets;
     
 }
 
@@ -170,7 +181,6 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // Handle scroll behavior here
     if(!self.isMoreDataLoading){
         // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
@@ -180,6 +190,12 @@
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
             self.isMoreDataLoading = true;
             
+            // Update position of loadingMoreView, and start loading indicator
+            CGRect frame = CGRectMake(0, self.tableView.contentSize.height, self.tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+            loadingMoreView.frame = frame;
+            [loadingMoreView startAnimating];
+            
+            // Code to load more results
             [self loadMoreData];
         }
     }
@@ -187,7 +203,29 @@
 
 - (void) loadMoreData {
     
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    [query includeKey:@"createdAt"];
+    //[query whereKey:@"likesCount" greaterThan:@100];
+    query.limit = 20;
     
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            self.isMoreDataLoading = false;
+            // Stop the loading indicator
+            [loadingMoreView stopAnimating];
+            // do something with the array of object returned by the call
+            self.posts = [posts mutableCopy];
+            [self.tableView reloadData];
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        
+    }];
     
 }
 
