@@ -231,7 +231,7 @@
         <!--Home-->
         <scene sceneID="QwY-AV-8xs">
             <objects>
-                <viewController storyboardIdentifier="HomeTimelineViewController" title="Home" id="sd1-Mt-Kir" customClass="HomeTimelineViewController" sceneMemberID="viewController">
+                <viewController title="Home" id="sd1-Mt-Kir" customClass="HomeTimelineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G0R-Gh-dlO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -425,7 +425,7 @@
         <!--Home-->
         <scene sceneID="WKE-Y4-YnY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSR-TG-Xgk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeTimelineViewController" automaticallyAdjustsScrollViewInsets="NO" id="lSR-TG-Xgk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="bHM-wp-btF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xBb-oB-tmQ">
