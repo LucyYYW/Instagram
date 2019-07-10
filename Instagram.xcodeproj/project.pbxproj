@@ -24,6 +24,8 @@
 		B9DA10B022D525FE00D0ED5C /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA10AF22D525FE00D0ED5C /* PostCell.m */; };
 		B9DA10B322D5A1FF00D0ED5C /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA10B222D5A1FF00D0ED5C /* DetailsViewController.m */; };
 		B9DA10B622D693DE00D0ED5C /* InfiniteScrollActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA10B522D693DE00D0ED5C /* InfiniteScrollActivityView.m */; };
+		B9DA10B922D6973F00D0ED5C /* MyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA10B822D6973F00D0ED5C /* MyProfileViewController.m */; };
+		B9DA10BC22D69A5500D0ED5C /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DA10BB22D69A5500D0ED5C /* EditProfileViewController.m */; };
 		C0ED2786E1654937F5DE981F /* libPods-InstagramUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEB37134132C0E3F771E2C3 /* libPods-InstagramUITests.a */; };
 		C2CEA4FB5F81600082EE8702 /* libPods-InstagramTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A0E59B35768E25F36CAF0EB /* libPods-InstagramTests.a */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,10 @@
 		B9DA10B222D5A1FF00D0ED5C /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		B9DA10B422D693DE00D0ED5C /* InfiniteScrollActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InfiniteScrollActivityView.h; sourceTree = "<group>"; };
 		B9DA10B522D693DE00D0ED5C /* InfiniteScrollActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InfiniteScrollActivityView.m; sourceTree = "<group>"; };
+		B9DA10B722D6973F00D0ED5C /* MyProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyProfileViewController.h; sourceTree = "<group>"; };
+		B9DA10B822D6973F00D0ED5C /* MyProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyProfileViewController.m; sourceTree = "<group>"; };
+		B9DA10BA22D69A5500D0ED5C /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		B9DA10BB22D69A5500D0ED5C /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		C93590F06A5D4282C43FBACC /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		CE22ACBA4B6DA961E74D8567 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 		D3B68F324032055C2F4C52DA /* Pods-InstagramTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramTests.debug.xcconfig"; path = "Target Support Files/Pods-InstagramTests/Pods-InstagramTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +219,10 @@
 				B9DA10B222D5A1FF00D0ED5C /* DetailsViewController.m */,
 				B9DA10B422D693DE00D0ED5C /* InfiniteScrollActivityView.h */,
 				B9DA10B522D693DE00D0ED5C /* InfiniteScrollActivityView.m */,
+				B9DA10B722D6973F00D0ED5C /* MyProfileViewController.h */,
+				B9DA10B822D6973F00D0ED5C /* MyProfileViewController.m */,
+				B9DA10BA22D69A5500D0ED5C /* EditProfileViewController.h */,
+				B9DA10BB22D69A5500D0ED5C /* EditProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -456,8 +466,10 @@
 				B9DA10A922D446C300D0ED5C /* ComposeViewController.m in Sources */,
 				B9DA10B022D525FE00D0ED5C /* PostCell.m in Sources */,
 				B9DA109D22D4049200D0ED5C /* LoginViewController.m in Sources */,
+				B9DA10BC22D69A5500D0ED5C /* EditProfileViewController.m in Sources */,
 				B9DA10B622D693DE00D0ED5C /* InfiniteScrollActivityView.m in Sources */,
 				B9DA10A022D4098100D0ED5C /* InitialViewController.m in Sources */,
+				B9DA10B922D6973F00D0ED5C /* MyProfileViewController.m in Sources */,
 				B9DA10AD22D4FF8B00D0ED5C /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
