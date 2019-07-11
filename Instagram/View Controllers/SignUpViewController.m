@@ -75,6 +75,7 @@
             NSLog(@"User registered successfully");
             PFUser *user = [PFUser currentUser];
             user[@"profileImage"] = [Post getPFFileFromImage:[UIImage imageNamed:@"profilePlaceholder"] withName:@"profileImage"];
+            user[@"selfIntro"] = @"";
             [user saveInBackground];
             //manually segue to logged in view
             [self performSegueWithIdentifier:@"signuplogin" sender:nil];

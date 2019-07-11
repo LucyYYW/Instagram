@@ -13,6 +13,7 @@
 @interface MyProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *selfIntroLabel;
 
 @end
 
@@ -28,6 +29,7 @@
 - (void) updateUser{
     PFUser *user = [PFUser currentUser];
     self.userNameLabel.text = user.username;
+    self.selfIntroLabel.text = user[@"selfIntro"];
     
     PFFileObject *profileImageFile = user[@"imageProfile"];
     NSString *urlString = profileImageFile.url;

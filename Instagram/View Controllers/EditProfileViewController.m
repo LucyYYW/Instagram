@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UITextView *bioTextView;
 
 
 
@@ -27,7 +28,7 @@
     // Do any additional setup after loading the view.
     PFUser *user = [PFUser currentUser];
     self.userNameField.text = user.username;
-    
+    self.bioTextView.text = user[@"selfIntro"];
     
     PFFileObject *profileImageFile = user[@"imageProfile"];
     NSString *urlString = profileImageFile.url;
@@ -90,8 +91,9 @@
 - (IBAction)onSave:(id)sender {
     PFUser *user = [PFUser currentUser];
     user.username = self.userNameField.text;
+    user[@"selfIntro"] = self.bioTextView.text;
     user[@"imageProfile"] = [Post getPFFileFromImage:self.profileImageView.image withName:@"profileImage"];
-    [user saveInBackground];
+    
     [user saveInBackground];
     [self.delegate didEditProfile];
     [self dismissViewControllerAnimated:YES completion:nil];
