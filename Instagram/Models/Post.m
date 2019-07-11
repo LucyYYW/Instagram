@@ -19,6 +19,7 @@
 @dynamic likeCount;
 @dynamic commentCount;
 
+
 + (nonnull NSString *)parseClassName {
     return @"Post";
 }
@@ -31,6 +32,7 @@
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
+    newPost.likedBy = [[NSMutableArray alloc] init];
     
     [newPost saveInBackgroundWithBlock: completion];
     
@@ -51,5 +53,7 @@
     NSString *imageName = [NSString stringWithFormat:@"%@.png", name];
     return [PFFileObject fileObjectWithName:imageName data:imageData];
 }
+
+
 
 @end

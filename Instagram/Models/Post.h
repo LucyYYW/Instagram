@@ -20,6 +20,7 @@
 @property (nonatomic, strong) PFFileObject * _Nonnull image;
 @property (nonatomic, strong) NSNumber * _Nonnull likeCount;
 @property (nonatomic, strong) NSNumber * _Nonnull commentCount;
+@property (nonatomic, strong) NSArray * _Nonnull likedBy;
 
 + (void)postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 + (PFFileObject * _Nonnull)getPFFileFromImage: (UIImage * _Nullable)image withName: (NSString* _Nullable)name;

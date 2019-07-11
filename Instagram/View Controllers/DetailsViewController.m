@@ -33,7 +33,7 @@
     
     self.captionLabel.text = self.post.caption;
     
-    self.likeLabel.text = [NSString stringWithFormat:@"%i likes",[self.post.likeCount intValue]];
+    self.likeLabel.text = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
     
     PFFileObject *userProfileFile = self.post.author[@"profileImage"];
     NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
@@ -49,18 +49,26 @@
 - (IBAction)onTapLike:(id)sender {
     UIButton *likebtn = (UIButton *)sender;
     
-    
-    if ([self.post.likeCount intValue] == 0)
+    if (![self.post[@"likedBy"] containsObject:[PFUser currentUser].objectId])
     {
         [likebtn setImage:[UIImage imageNamed:@"likeREd"] forState:UIControlStateNormal];
-        
+        NSMutableArray *temp = [self.post[@"likedBy"] mutableCopy];
+        [temp addObject:[PFUser currentUser].objectId];
+        NSArray *temp2 = [NSArray arrayWithArray:temp];
+        self.post[@"likedBy"] = temp2;
+        self.post.likedBy = temp2;
         self.post.likeCount = [NSNumber numberWithInt:([self.post.likeCount intValue] + 1)];
         [self.post saveInBackground];
+        
     }
     else
     {
         [likebtn setImage:[UIImage imageNamed:@"likeWhite"] forState:UIControlStateNormal];
-        
+        NSMutableArray *temp = [self.post[@"likedBy"] mutableCopy];
+        [temp removeObject:[PFUser currentUser].objectId];
+        NSArray *temp2 = [NSArray arrayWithArray:temp];
+        self.post[@"likedBy"] = temp2;
+        self.post.likedBy = temp2;
         self.post.likeCount = [NSNumber numberWithInt:([self.post.likeCount intValue] - 1)];
         [self.post saveInBackground];
     }
