@@ -463,6 +463,7 @@
                         <outlet property="tableView" destination="uhV-iC-PyX" id="wme-cE-qVb"/>
                         <segue destination="iUT-AW-Plr" kind="modal" identifier="compose" id="ebG-iZ-c0t"/>
                         <segue destination="NNO-Va-jmO" kind="show" identifier="viewDetails" id="Xnc-iA-XhF"/>
+                        <segue destination="SON-A0-ttV" kind="show" identifier="homeToUserProfile" id="If6-zu-h19"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUF-OC-q3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1122,6 +1123,7 @@
         <image name="wordlogo" width="389" height="129"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="If6-zu-h19"/>
         <segue reference="Xz7-6B-sbd"/>
         <segue reference="rXV-v2-Hqx"/>
     </inferredMetricsTieBreakers>

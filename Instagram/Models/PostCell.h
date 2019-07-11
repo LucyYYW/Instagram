@@ -12,7 +12,8 @@
 #import "Post.h"
 #import "PostCell.h"
 
-@protocol PostCellDetailsDelegate;
+@protocol PostCellDelegate;
+
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -31,15 +32,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic)  Post * _Nonnull post;
 
-@property (nonatomic, weak) id<PostCellDetailsDelegate> detailDelegate;
+@property (nonatomic, weak) id<PostCellDelegate> delegate;
 
 - (void) refreshCellView;
 
 @end
 
-@protocol PostCellDetailsDelegate
+@protocol PostCellDelegate
 -(void) didTapDetailsOnCell: (PostCell *) cell;
-
+-(void) didTapUserProfilePic: (PFUser *) user;
 @end
 
 NS_ASSUME_NONNULL_END

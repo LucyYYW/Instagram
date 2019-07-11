@@ -18,6 +18,7 @@
 #import "DetailsViewController.h"
 #import "InfiniteScrollActivityView.h"
 #import "DateTools.h"
+#import "OtherProfileViewController.h"
 
 
 
@@ -180,7 +181,7 @@ InfiniteScrollActivityView* loadingMoreView;
     cell.dateLabel.text = [NSString stringWithFormat:@"%@ ago",post.createdAt.shortTimeAgoSinceNow];
     
    
-    cell.detailDelegate = self;
+    cell.delegate = self;
     return cell;
 }
 
@@ -234,7 +235,6 @@ InfiniteScrollActivityView* loadingMoreView;
     [query whereKey:@"createdAt" lessThan:earliest];
     
     
-    
     query.limit = 20;
     
     // fetch data asynchronously
@@ -253,6 +253,9 @@ InfiniteScrollActivityView* loadingMoreView;
         
     }];
     
+}
+- (void) didTapUserProfilePic:(PFUser *) user{
+    [self performSegueWithIdentifier:@"homeToUserProfile" sender:user];
 }
 
 #pragma mark - Navigation
@@ -273,6 +276,9 @@ InfiniteScrollActivityView* loadingMoreView;
         detailsController.post = cell.post;
         detailsController.postCell = cell;
         detailsController.tableView = self.tableView;
+    } else if ([segue.identifier isEqualToString:@"homeToUserProfile"]) {
+        OtherProfileViewController *otherController = [segue destinationViewController];
+        otherController.user = (PFUser*) sender;
     }
 }
 

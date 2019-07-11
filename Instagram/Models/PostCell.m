@@ -16,6 +16,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [self.profileImageView addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profileImageView setUserInteractionEnabled:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -24,12 +27,14 @@
     
 }
 
-- (IBAction)onTapUserProfile:(id)sender {
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    // TODO: Call method on delegate
+    [self.delegate didTapUserProfilePic:self.post.author];
     
 }
 
 - (IBAction)onTapDetailsBtn:(id)sender {
-    [self.detailDelegate didTapDetailsOnCell:self];
+    [self.delegate didTapDetailsOnCell:self];
 }
 
 - (IBAction)onTapLike:(id)sender {

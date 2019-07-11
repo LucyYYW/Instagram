@@ -14,7 +14,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeTimelineViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource,PostCellDetailsDelegate, UIScrollViewDelegate>
+@interface HomeTimelineViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,ComposeViewControllerDelegate,UITableViewDelegate, UITableViewDataSource,PostCellDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIImage *originalImage;
 @property (strong, nonatomic) UIImage *editedImage;
