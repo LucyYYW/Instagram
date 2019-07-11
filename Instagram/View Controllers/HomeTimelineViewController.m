@@ -155,6 +155,13 @@ InfiniteScrollActivityView* loadingMoreView;
     Post *post = self.posts[indexPath.row];
     cell.post = post;
     
+    if ([post.likeCount intValue] == 0) {
+        [cell.likeButton setImage:[UIImage imageNamed:@"likeWhite.png"] forState:UIControlStateNormal];
+        cell.likeLabel.text = @"0 like";
+    } else {
+        [cell.likeButton setImage:[UIImage imageNamed:@"likeREd.png"] forState:UIControlStateNormal];
+         cell.likeLabel.text = [NSString stringWithFormat:@"%i likes",[post.likeCount intValue]];
+    }
     
     cell.userNameLabel.text = post.author.username;
     cell.captionLabel.text = post.caption;
@@ -167,7 +174,7 @@ InfiniteScrollActivityView* loadingMoreView;
     
     cell.dateLabel.text = [NSString stringWithFormat:@"%@ ago",post.createdAt.shortTimeAgoSinceNow];
     
-    cell.likeLabel.text = [NSString stringWithFormat:@"%i likes",[post.likeCount intValue]];
+   
     cell.detailDelegate = self;
     return cell;
 }

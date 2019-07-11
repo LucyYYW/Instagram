@@ -7,6 +7,9 @@
 //
 
 #import "PostCell.h"
+#import "Parse/Parse.h"
+#import "UIImageView+AFNetworking.h"
+#import "DateTools.h"
 
 @implementation PostCell
 
@@ -20,10 +23,56 @@
     // Configure the view for the selected state
     
 }
+
 - (IBAction)onTapDetailsBtn:(id)sender {
     [self.detailDelegate didTapDetailsOnCell:self];
+}
 
+- (IBAction)onTapLike:(id)sender {
+    UIButton *likebtn = (UIButton *)sender;
+    
+    //if( [[likebtn imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"favor-icon.png"]])
+    if ([self.post.likeCount intValue] == 0)
+    {
+        [likebtn setImage:[UIImage imageNamed:@"likeREd"] forState:UIControlStateNormal];
+        
+        self.post.likeCount = [NSNumber numberWithInt:([self.post.likeCount intValue] + 1)];
+        [self.post saveInBackground];
+    }
+    else
+    {
+        [likebtn setImage:[UIImage imageNamed:@"likeWhite"] forState:UIControlStateNormal];
+        
+        self.post.likeCount = [NSNumber numberWithInt:([self.post.likeCount intValue] - 1)];
+        [self.post saveInBackground];
+    }
+    
+    [self refreshCellView];
 }
 
 
+- (IBAction)onTapComment:(id)sender {
+}
+
+- (void) refreshCellView {
+    self.userNameLabel.text = self.post.author.username;
+    self.captionLabel.text = self.post.caption;
+    NSURL *url = [NSURL URLWithString:self.post.image.url];
+    [self.postImageView setImageWithURL:url];
+    
+    PFFileObject *userProfileFile = self.post.author[@"profileImage"];
+    NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
+    [self.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
+    
+    self.dateLabel.text = [NSString stringWithFormat:@"%@ ago",self.post.createdAt.shortTimeAgoSinceNow];
+    
+    if ([self.post.likeCount intValue] == 0) {
+        [self.likeButton setImage:[UIImage imageNamed:@"likeWhite.png"] forState:UIControlStateNormal];
+        self.likeLabel.text = @"0 like";
+    } else {
+        [self.likeButton setImage:[UIImage imageNamed:@"likeREd.png"] forState:UIControlStateNormal];
+        self.likeLabel.text = [NSString stringWithFormat:@"%i likes",[self.post.likeCount intValue]];
+    }
+    
+}
 @end

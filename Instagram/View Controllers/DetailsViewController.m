@@ -38,6 +38,12 @@
     PFFileObject *userProfileFile = self.post.author[@"profileImage"];
     NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
     [self.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
+    
+    if ([self.post.likeCount intValue] == 0) {
+        [self.likeButton setImage:[UIImage imageNamed:@"likeWhite.png"] forState:UIControlStateNormal];
+    } else {
+        [self.likeButton setImage:[UIImage imageNamed:@"likeREd.png"] forState:UIControlStateNormal];
+    }
      
 }
 

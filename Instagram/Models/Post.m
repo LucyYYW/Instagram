@@ -33,7 +33,7 @@
     newPost.commentCount = @(0);
     
     [newPost saveInBackgroundWithBlock: completion];
-    //return newPost;
+    
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image withName: (NSString* _Nullable)name {
