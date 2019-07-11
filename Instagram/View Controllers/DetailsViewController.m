@@ -10,10 +10,14 @@
 #import "UIImageView+AFNetworking.h"
 #import "OtherProfileViewController.h"
 #import "CommentViewController.h"
+#import "CommentCell.h"
+#import "Comment.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DetailsViewController ()
 
 @property (strong,nonatomic) NSArray* comments;
+@property (weak, nonatomic) IBOutlet UITableView *commentTableView;
 
 @end
 
@@ -25,6 +29,10 @@
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
     [self.profileImageView addGestureRecognizer:profileTapGestureRecognizer];
     [self.profileImageView setUserInteractionEnabled:YES];
+    
+    self.commentTableView.delegate = self;
+    self.commentTableView.dataSource = self;
+    self.commentTableView.rowHeight = UITableViewAutomaticDimension;
     
     [self setDetailsView];
 }
@@ -55,6 +63,8 @@
             self.likeLabel.text = [self.likeLabel.text stringByAppendingString:@"s"];
         }
     }
+    
+    [self fetchLatest20Comments];
      
 }
 - (IBAction)onTapLike:(id)sender {
@@ -122,7 +132,7 @@
         if (posts != nil) {
             // do something with the array of object returned by the call
             self.comments = [posts mutableCopy];
-            //[self.commentTableView reloadData];
+            [self.commentTableView reloadData];
             
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -130,6 +140,25 @@
         
     }];
 }
+
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+    Comment *comment = self.comments[indexPath.row];
+    PFFileObject *profile = comment.author[@"profileImage"];
+    NSString *url = profile.url;
+    //[cell.imageView setImageWithURL:[NSURL URLWithString:url]];
+    [cell.commenterImageView setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
+    cell.commentTextLabel.text = comment.commentText;
+    return cell;
+    
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.comments.count;
+}
+
+
 
 #pragma mark - Navigation
 
@@ -148,6 +177,7 @@
         commentController.delegate = self;
     }
 }
+
 
 
 @end
