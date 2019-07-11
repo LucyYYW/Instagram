@@ -404,11 +404,22 @@
                                     <constraint firstAttribute="width" constant="55" id="UJj-5V-Ca5"/>
                                     <constraint firstAttribute="height" constant="55" id="qxo-WY-VpO"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="post"/>
+                                <state key="normal" title="Button" image="plus"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="27.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="onTapPost:" destination="sd1-Mt-Kir" eventType="touchUpInside" id="UrO-hv-8kO"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xCy-kq-J4K">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -429,6 +440,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="xCy-kq-J4K" id="GcX-ne-Aor"/>
                         <outlet property="tableView" destination="uhV-iC-PyX" id="wme-cE-qVb"/>
                         <segue destination="iUT-AW-Plr" kind="modal" identifier="compose" id="ebG-iZ-c0t"/>
                         <segue destination="NNO-Va-jmO" kind="show" identifier="viewDetails" id="Xnc-iA-XhF"/>
@@ -876,7 +888,7 @@
         <image name="details1" width="225" height="225"/>
         <image name="home-icon" width="30" height="30"/>
         <image name="likeWhite" width="225" height="225"/>
-        <image name="post" width="225" height="225"/>
+        <image name="plus" width="225" height="225"/>
         <image name="profile_tab" width="25" height="25"/>
         <image name="whitelogo2" width="1600" height="1200"/>
         <image name="wordlogo" width="389" height="129"/>
