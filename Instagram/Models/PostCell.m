@@ -83,15 +83,15 @@
     [self.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
     
     self.dateLabel.text = [NSString stringWithFormat:@"%@ ago",self.post.createdAt.shortTimeAgoSinceNow];
-    
-    if (![self.post[@"likedBy"] containsObject:[PFUser currentUser].objectId]) {
-        [self.likeButton setImage:[UIImage imageNamed:@"likeWhite.png"] forState:UIControlStateNormal];
-        
-    } else {
-        [self.likeButton setImage:[UIImage imageNamed:@"likeREd.png"] forState:UIControlStateNormal];
-        
-    }
     self.likeLabel.text = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
+    
+    
+    if ([self.post.likeCount intValue] > 1) {
+        self.likeLabel.text = [self.likeLabel.text stringByAppendingString:@"s"];
+    }
+        
+    
+    
     
 }
 

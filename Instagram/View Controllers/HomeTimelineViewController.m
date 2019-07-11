@@ -160,14 +160,18 @@ InfiniteScrollActivityView* loadingMoreView;
     Post *post = self.posts[indexPath.row];
     cell.post = post;
     
+    cell.likeLabel.text = [NSString stringWithFormat:@"%i like",[post.likeCount intValue]];
     if (![post[@"likedBy"] containsObject:[PFUser currentUser].objectId]) {
         [cell.likeButton setImage:[UIImage imageNamed:@"likeWhite.png"] forState:UIControlStateNormal];
         
     } else {
         [cell.likeButton setImage:[UIImage imageNamed:@"likeREd.png"] forState:UIControlStateNormal];
+        if ([cell.post.likeCount intValue] > 1) {
+            cell.likeLabel.text = [cell.likeLabel.text stringByAppendingString:@"s"];
+        }
         
     }
-    cell.likeLabel.text = [NSString stringWithFormat:@"%i like",[post.likeCount intValue]];
+    
     
     cell.userNameLabel.text = post.author.username;
     cell.captionLabel.text = post.caption;

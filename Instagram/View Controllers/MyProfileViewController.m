@@ -98,9 +98,7 @@
 }
 
 - (void) didEditProfilewithImage: (UIImage* ) image{
-    
     [self.profileImageView setImage:image];
-    
 }
 
 

@@ -44,10 +44,13 @@
     NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
     [self.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
     
-    if ([self.post.likeCount intValue] == 0) {
+    if (![self.post[@"likedBy"] containsObject:[PFUser currentUser].objectId]) {
         [self.likeButton setImage:[UIImage imageNamed:@"likeWhite.png"] forState:UIControlStateNormal];
     } else {
         [self.likeButton setImage:[UIImage imageNamed:@"likeREd.png"] forState:UIControlStateNormal];
+        if ([self.post.likeCount intValue] > 1) {
+            self.likeLabel.text = [self.likeLabel.text stringByAppendingString:@"s"];
+        }
     }
      
 }
@@ -76,6 +79,11 @@
         self.post.likedBy = temp2;
         self.post.likeCount = [NSNumber numberWithInt:([self.post.likeCount intValue] - 1)];
         [self.post saveInBackground];
+    }
+    
+    self.likeLabel.text = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
+    if ([self.post.likeCount intValue] > 1) {
+        self.likeLabel.text = [self.likeLabel.text stringByAppendingString:@"s"];
     }
     
     [self.postCell refreshCellView];
