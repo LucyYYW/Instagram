@@ -114,7 +114,9 @@
 }
 
 - (void) didGetComment {
-    NSLog(@"didGetComment");
+    //NSLog(@"didGetComment");
+    [self fetchLatest20Comments];
+    [self.commentTableView reloadData];
 }
 
 - (void) fetchLatest20Comments {
