@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MyProfileViewController : UIViewController <editedProfile>
+@interface MyProfileViewController : UIViewController <editedProfile, UICollectionViewDelegate,UICollectionViewDataSource>
 
 @end
 
