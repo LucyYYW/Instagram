@@ -36,7 +36,7 @@ InfiniteScrollActivityView* loadingMoreView;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    self.isMoreDataLoading = false;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
@@ -218,13 +218,19 @@ InfiniteScrollActivityView* loadingMoreView;
 }
 
 - (void) loadMoreData {
+    Post *lastPost = [self.posts lastObject];
+    NSDate *earliest = lastPost.createdAt;
     
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
     [query includeKey:@"createdAt"];
-    //[query whereKey:@"likesCount" greaterThan:@100];
+    [query orderByDescending:@"createdAt"];
+    
+    [query whereKey:@"createdAt" lessThan:earliest];
+    
+    
+    
     query.limit = 20;
     
     // fetch data asynchronously
@@ -234,7 +240,7 @@ InfiniteScrollActivityView* loadingMoreView;
             // Stop the loading indicator
             [loadingMoreView stopAnimating];
             // do something with the array of object returned by the call
-            self.posts = [posts mutableCopy];
+            [self.posts addObjectsFromArray:posts];
             [self.tableView reloadData];
             
         } else {
