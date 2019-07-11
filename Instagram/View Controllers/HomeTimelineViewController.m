@@ -17,6 +17,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 #import "InfiniteScrollActivityView.h"
+#import "DateTools.h"
 
 
 
@@ -163,6 +164,7 @@ InfiniteScrollActivityView* loadingMoreView;
     NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
     [cell.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
     
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@ ago",post.createdAt.shortTimeAgoSinceNow];
     
     cell.likeLabel.text = [NSString stringWithFormat:@"%i likes",[post.likeCount intValue]];
     cell.detailDelegate = self;
