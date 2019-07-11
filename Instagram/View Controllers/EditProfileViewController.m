@@ -14,6 +14,12 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+
+
+/*
+@property (weak, nonatomic) NSString *usernameOriginal;
+@property (weak, nonatomic) NSString *imageURLOriginal;
+*/
 @end
 
 @implementation EditProfileViewController
@@ -23,14 +29,33 @@
     // Do any additional setup after loading the view.
     PFUser *user = [PFUser currentUser];
     self.userNameField.placeholder = user.username;
+    //self.usernameOriginal = user.username;
     
     PFFileObject *profileImageFile = user[@"imageProfile"];
     NSString *urlString = profileImageFile.url;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
+    //self.imageURLOriginal = urlString;
+    
+    
     
 }
 - (IBAction)onChangeProfieImage:(id)sender {
 }
+- (IBAction)onCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)onSave:(id)sender {
+    PFUser *user = [PFUser currentUser];
+    user.username = self.userNameField.text;
+    //user[@"profilePlaceholder"] = ***
+    [user saveInBackground];
+    [self.delegate didEditProfile];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)didTapOutside:(id)sender {
+    [self.view endEditing:YES];
+}
+
 
 /*
 #pragma mark - Navigation

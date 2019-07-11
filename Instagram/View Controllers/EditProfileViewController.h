@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol editedProfile
 
-@interface EditProfileViewController : UIViewController
+- (void) didEditProfile;
 
 @end
+
+@interface EditProfileViewController : UIViewController
+@property (weak, nonatomic) id<editedProfile> delegate;
+@end
+
+
 
 NS_ASSUME_NONNULL_END

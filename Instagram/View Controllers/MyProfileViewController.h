@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EditProfileViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MyProfileViewController : UIViewController
+@interface MyProfileViewController : UIViewController <editedProfile>
 
 @end
 
