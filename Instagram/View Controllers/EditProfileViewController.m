@@ -7,6 +7,8 @@
 //
 
 #import "EditProfileViewController.h"
+#import "Parse/Parse.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface EditProfileViewController ()
 
@@ -19,6 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    PFUser *user = [PFUser currentUser];
+    self.userNameField.placeholder = user.username;
+    
+    PFFileObject *profileImageFile = user[@"imageProfile"];
+    NSString *urlString = profileImageFile.url;
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
+    
 }
 - (IBAction)onChangeProfieImage:(id)sender {
 }
