@@ -699,6 +699,9 @@
                                                     <constraint firstAttribute="width" constant="32" id="uYT-yv-dgc"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="likeWhite"/>
+                                                <connections>
+                                                    <action selector="onTapLike:" destination="NNO-Va-jmO" eventType="touchUpInside" id="WVo-bF-KYN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AoD-MM-Q20">
                                                 <rect key="frame" x="131.5" y="522.5" width="32" height="32"/>
@@ -707,6 +710,9 @@
                                                     <constraint firstAttribute="width" constant="32" id="LCb-xO-S1C"/>
                                                 </constraints>
                                                 <state key="normal" title="Button" image="commentG"/>
+                                                <connections>
+                                                    <action selector="onTapComment:" destination="NNO-Va-jmO" eventType="touchUpInside" id="hVV-2S-ri1"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="captions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yH6-0X-ak2">
                                                 <rect key="frame" x="16" y="457" width="65.5" height="20.5"/>

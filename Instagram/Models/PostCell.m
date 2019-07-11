@@ -31,7 +31,7 @@
 - (IBAction)onTapLike:(id)sender {
     UIButton *likebtn = (UIButton *)sender;
     
-    //if( [[likebtn imageForState:UIControlStateNormal] isEqual:[UIImage imageNamed:@"favor-icon.png"]])
+    
     if ([self.post.likeCount intValue] == 0)
     {
         [likebtn setImage:[UIImage imageNamed:@"likeREd"] forState:UIControlStateNormal];

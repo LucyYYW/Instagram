@@ -32,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic)  Post * _Nonnull post;
 
 @property (nonatomic, weak) id<PostCellDetailsDelegate> detailDelegate;
+
+- (void) refreshCellView;
+
 @end
 
 @protocol PostCellDetailsDelegate

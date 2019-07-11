@@ -46,6 +46,32 @@
     }
      
 }
+- (IBAction)onTapLike:(id)sender {
+    UIButton *likebtn = (UIButton *)sender;
+    
+    
+    if ([self.post.likeCount intValue] == 0)
+    {
+        [likebtn setImage:[UIImage imageNamed:@"likeREd"] forState:UIControlStateNormal];
+        
+        self.post.likeCount = [NSNumber numberWithInt:([self.post.likeCount intValue] + 1)];
+        [self.post saveInBackground];
+    }
+    else
+    {
+        [likebtn setImage:[UIImage imageNamed:@"likeWhite"] forState:UIControlStateNormal];
+        
+        self.post.likeCount = [NSNumber numberWithInt:([self.post.likeCount intValue] - 1)];
+        [self.post saveInBackground];
+    }
+    
+    [self.postCell refreshCellView];
+    [self.tableView reloadData];
+}
+
+
+- (IBAction)onTapComment:(id)sender {
+}
 
 /*
 #pragma mark - Navigation
