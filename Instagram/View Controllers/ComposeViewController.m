@@ -10,6 +10,8 @@
 #import "HomeTimelineViewController.h"
 #import "UITextView+Placeholder.h"
 #import "Post.h"
+#import "MBProgressHUD.h"
+
 
 @interface ComposeViewController () <UITextViewDelegate>
 
@@ -36,15 +38,29 @@
 
 
 - (IBAction)onTapPost:(id)sender {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Post postUserImage:self.photo withCaption:self.wordView.text withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
         if (error != nil) {
             NSLog(@"User post failed: %@", error.localizedDescription);
+            [self dismissViewControllerAnimated:true completion: nil];
         } else {
             NSLog(@"User posted successfully");
             [self.delegate didShare];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self dismissViewControllerAnimated:true completion: nil];
         }
     }];
-    [self dismissViewControllerAnimated:true completion: nil];
+    
+    
+        
+        
+    
+    
+    
+    
+    
+    
 }
 
 /*

@@ -76,12 +76,13 @@ InfiniteScrollActivityView* loadingMoreView;
             // do something with the array of object returned by the call
             self.posts = [posts mutableCopy];
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+            [self.activityIndicator stopAnimating];
             
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
-        [self.refreshControl endRefreshing];
-        [self.activityIndicator stopAnimating];
+        
     }];
 }
 
