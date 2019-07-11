@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parse/Parse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OtherProfileViewController : UIViewController
+@interface OtherProfileViewController : UIViewController <UICollectionViewDelegate,UICollectionViewDataSource>
+
+@property (strong, nonatomic) PFUser *user;
 
 @end
 

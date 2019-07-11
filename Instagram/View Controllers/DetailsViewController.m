@@ -5,9 +5,10 @@
 //  Created by lucyyyw on 7/9/19.
 //  Copyright © 2019 lucyyyw. All rights reserved.
 //
-
+#import "Parse/Parse.h"
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "OtherProfileViewController.h"
 
 @interface DetailsViewController ()
 
@@ -17,7 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [self.profileImageView addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profileImageView setUserInteractionEnabled:YES];
+    
     [self setDetailsView];
 }
 
@@ -81,14 +86,24 @@
 - (IBAction)onTapComment:(id)sender {
 }
 
-/*
+
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    [self performSegueWithIdentifier:@"detailToUserProfile" sender:self.post.author];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"detailToUserProfile"]){
+        OtherProfileViewController *otherController = [segue destinationViewController];
+        otherController.user = sender;
+        
+    }
 }
-*/
+
 
 @end

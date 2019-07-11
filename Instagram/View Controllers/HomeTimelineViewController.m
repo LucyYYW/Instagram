@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (assign, nonatomic) BOOL isMoreDataLoading;
+
 @end
 
 @implementation HomeTimelineViewController
@@ -37,6 +38,7 @@ InfiniteScrollActivityView* loadingMoreView;
     [super viewDidLoad];
     
     self.isMoreDataLoading = false;
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
@@ -75,6 +77,7 @@ InfiniteScrollActivityView* loadingMoreView;
         if (posts != nil) {
             // do something with the array of object returned by the call
             self.posts = [posts mutableCopy];
+            
             [self.tableView reloadData];
             [self.refreshControl endRefreshing];
             [self.activityIndicator stopAnimating];

@@ -88,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wordlogo" translatesAutoresizingMaskIntoConstraints="NO" id="IMB-u9-Ze0">
-                                <rect key="frame" x="37.5" y="69" width="300.00000000000011" height="129"/>
+                                <rect key="frame" x="37.5" y="125.5" width="300" height="16"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eBx-Cv-fHq">
                                 <rect key="frame" x="75" y="251.5" width="225" height="31"/>
@@ -202,7 +202,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wordlogo" translatesAutoresizingMaskIntoConstraints="NO" id="xSw-GY-hQG">
-                                <rect key="frame" x="37.5" y="69" width="300.00000000000011" height="129"/>
+                                <rect key="frame" x="37.5" y="125.5" width="300" height="16"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kws-NQ-pui">
                                 <rect key="frame" x="75" y="251.5" width="225" height="31"/>
@@ -914,7 +914,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PostCollectionCell" id="wXE-dI-62A" customClass="PostCollectionCell">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OtherPostCollectionCell" id="wXE-dI-62A" customClass="PostCollectionCell">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
