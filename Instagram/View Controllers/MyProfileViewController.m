@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selfIntroLabel;
 
+
 @end
 
 @implementation MyProfileViewController
@@ -25,6 +26,35 @@
     [self updateUser];
     
 }
+
+
+/*
+- (void) fetchmyLatest20Posts {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    [query includeKey:@"createdAt"];
+    [query whereKey:@"author" equalTo:[PFUser currentUser]];
+    //[query whereKey:@"likesCount" greaterThan:@100];
+    query.limit = 20;
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.posts = [posts mutableCopy];
+            [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+            //[self.activityIndicator stopAnimating];
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        
+    }];
+}
+ */
 
 - (void) updateUser{
     PFUser *user = [PFUser currentUser];
