@@ -17,10 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 
 
-/*
-@property (weak, nonatomic) NSString *usernameOriginal;
-@property (weak, nonatomic) NSString *imageURLOriginal;
-*/
+
 @end
 
 @implementation EditProfileViewController
@@ -29,13 +26,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     PFUser *user = [PFUser currentUser];
-    self.userNameField.placeholder = user.username;
-    //self.usernameOriginal = user.username;
+    self.userNameField.text = user.username;
+    
     
     PFFileObject *profileImageFile = user[@"imageProfile"];
     NSString *urlString = profileImageFile.url;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
-    //self.imageURLOriginal = urlString;
+    
     
     
     
@@ -62,13 +59,8 @@
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
-    
-    // Do something with the images (based on your use case)
     editedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
-    
-    PFUser *user = [PFUser currentUser];
-    user[@"imageProfile"] = [Post getPFFileFromImage:editedImage withName:@"profileImage"];
-    [user saveInBackground];
+    [self.profileImageView setImage:editedImage];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -99,7 +91,8 @@
 - (IBAction)onSave:(id)sender {
     PFUser *user = [PFUser currentUser];
     user.username = self.userNameField.text;
-    //user[@"profilePlaceholder"] = ***
+    user[@"imageProfile"] = [Post getPFFileFromImage:self.profileImageView.image withName:@"profileImage"];
+    [user saveInBackground];
     [user saveInBackground];
     [self.delegate didEditProfile];
     [self dismissViewControllerAnimated:YES completion:nil];
