@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol editedProfile
 
-- (void) didEditProfile;
+- (void) didEditProfilewithImage: (UIImage* ) image;
 
 @end
 

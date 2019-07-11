@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UITextView *bioTextView;
 
-
+@property (strong,nonatomic) UIImage *editedImage;
 
 @end
 
@@ -30,9 +30,9 @@
     self.userNameField.text = user.username;
     self.bioTextView.text = user[@"selfIntro"];
     
-    PFFileObject *profileImageFile = user[@"imageProfile"];
+    PFFileObject *profileImageFile = user[@"profileImage"];
     NSString *urlString = profileImageFile.url;
-    [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString]];
     
     
     
@@ -59,8 +59,8 @@
     // Get the image captured by the UIImagePickerController
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
-    editedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
-    [self.profileImageView setImage:editedImage];
+    self.editedImage = [self resizeImage:editedImage withSize:CGSizeMake(400, 400)];
+    [self.profileImageView setImage:self.editedImage];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -92,11 +92,11 @@
     PFUser *user = [PFUser currentUser];
     user.username = self.userNameField.text;
     user[@"selfIntro"] = self.bioTextView.text;
-    user[@"imageProfile"] = [Post getPFFileFromImage:self.profileImageView.image withName:@"profileImage"];
+    user[@"profileImage"] = [Post getPFFileFromImage:self.profileImageView.image withName:@"profileImage"];
     
     [user saveInBackground];
-    [self.delegate didEditProfile];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate didEditProfilewithImage:self.editedImage];
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 - (IBAction)didTapOutside:(id)sender {
     [self.view endEditing:YES];

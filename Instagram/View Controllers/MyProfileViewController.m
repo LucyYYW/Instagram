@@ -31,17 +31,18 @@
     self.userNameLabel.text = user.username;
     self.selfIntroLabel.text = user[@"selfIntro"];
     
-    PFFileObject *profileImageFile = user[@"imageProfile"];
+    PFFileObject *profileImageFile = user[@"profileImage"];
     NSString *urlString = profileImageFile.url;
-    [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
+    [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString]];
 }
 
 - (IBAction)onEditProfile:(id)sender {
     [self performSegueWithIdentifier:@"editProfile" sender:nil];
 }
 
-- (void) didEditProfile{
-    [self updateUser];
+- (void) didEditProfilewithImage: (UIImage* ) image{
+    
+    [self.profileImageView setImage:image];
     
 }
 

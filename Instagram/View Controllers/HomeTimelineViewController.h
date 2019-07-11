@@ -10,6 +10,7 @@
 #import "ComposeViewController.h"
 #import "PFFileObject.h"
 #import "PostCell.h"
+#import "EditProfileViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

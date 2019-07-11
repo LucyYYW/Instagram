@@ -150,6 +150,7 @@ InfiniteScrollActivityView* loadingMoreView;
     
 }
 
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *post = self.posts[indexPath.row];
@@ -170,7 +171,7 @@ InfiniteScrollActivityView* loadingMoreView;
     
     PFFileObject *userProfileFile = post.author[@"profileImage"];
     NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
-    [cell.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
+    [cell.profileImageView setImageWithURL:url2];
     
     cell.dateLabel.text = [NSString stringWithFormat:@"%@ ago",post.createdAt.shortTimeAgoSinceNow];
     
