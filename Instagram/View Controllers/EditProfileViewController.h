@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface EditProfileViewController : UIViewController
+@interface EditProfileViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (weak, nonatomic) id<editedProfile> delegate;
 @end
 
