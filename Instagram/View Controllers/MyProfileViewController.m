@@ -9,13 +9,14 @@
 #import "MyProfileViewController.h"
 #import "Parse/Parse.h"
 #import "UIImageView+AFNetworking.h"
+#import "PostCollectionCell.h"
 
 @interface MyProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selfIntroLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+@property (strong, nonatomic) NSArray *myPosts;
 
 @end
 
@@ -39,8 +40,22 @@
     
 }
 
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    PostCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PostCollectionCell" forIndexPath:indexPath];
+    Post *post = self.myPosts[indexPath.item];
+    
+    NSURL *url = [NSURL URLWithString:post.image.url];
+    [cell.postImageView setImageWithURL:url];
+    return cell;
+}
 
-/*
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return self.myPosts.count;
+}
+
+
+
 - (void) fetchmyLatest20Posts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
@@ -48,17 +63,15 @@
     [query includeKey:@"author"];
     [query includeKey:@"createdAt"];
     [query whereKey:@"author" equalTo:[PFUser currentUser]];
-    //[query whereKey:@"likesCount" greaterThan:@100];
-    query.limit = 20;
+    
+    //query.limit = 20;
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             // do something with the array of object returned by the call
-            self.posts = [posts mutableCopy];
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
-            //[self.activityIndicator stopAnimating];
+            self.myPosts = [posts mutableCopy];
+            [self.collectionView reloadData];
             
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -66,7 +79,7 @@
         
     }];
 }
- */
+
 
 - (void) updateUser{
     PFUser *user = [PFUser currentUser];
@@ -76,6 +89,8 @@
     PFFileObject *profileImageFile = user[@"profileImage"];
     NSString *urlString = profileImageFile.url;
     [self.profileImageView setImageWithURL:[NSURL URLWithString:urlString]];
+    
+    [self fetchmyLatest20Posts];
 }
 
 - (IBAction)onEditProfile:(id)sender {
