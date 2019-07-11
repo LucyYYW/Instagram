@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "OtherProfileViewController.h"
+#import "CommentViewController.h"
 
 @interface DetailsViewController ()
 
@@ -92,6 +93,7 @@
 
 
 - (IBAction)onTapComment:(id)sender {
+    [self performSegueWithIdentifier:@"detailComment" sender:self.post];
 }
 
 
@@ -110,6 +112,10 @@
         OtherProfileViewController *otherController = [segue destinationViewController];
         otherController.user = sender;
         
+    } else if ([segue.identifier isEqualToString:@"detailComment"]) {
+        UINavigationController *navigation = [segue destinationViewController];
+        CommentViewController *commentController = (CommentViewController*)navigation.topViewController;
+        commentController.post = sender;
     }
 }
 
