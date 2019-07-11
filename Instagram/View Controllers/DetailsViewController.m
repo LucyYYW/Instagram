@@ -13,6 +13,8 @@
 
 @interface DetailsViewController ()
 
+@property (strong,nonatomic) NSArray* comments;
+
 @end
 
 @implementation DetailsViewController
@@ -101,6 +103,33 @@
     [self performSegueWithIdentifier:@"detailToUserProfile" sender:self.post.author];
 }
 
+- (void) didGetComment {
+    NSLog(@"didGetComment");
+}
+
+- (void) fetchLatest20Comments {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"author"];
+    [query includeKey:@"createdAt"];
+    [query whereKey:@"postID" equalTo:self.post.objectId];
+    
+    query.limit = 20;
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            // do something with the array of object returned by the call
+            self.comments = [posts mutableCopy];
+            //[self.commentTableView reloadData];
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        
+    }];
+}
 
 #pragma mark - Navigation
 
@@ -116,6 +145,7 @@
         UINavigationController *navigation = [segue destinationViewController];
         CommentViewController *commentController = (CommentViewController*)navigation.topViewController;
         commentController.post = sender;
+        commentController.delegate = self;
     }
 }
 

@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Post.h"
 #import "PostCell.h"
+#import "CommentViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailsViewController : UIViewController
+@interface DetailsViewController : UIViewController <CommentDetailDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;

@@ -43,7 +43,7 @@
 
         } else {
             NSLog(@"User commented successfully");
-            //[self.delegate didgetComment];
+            [self.delegate didGetComment];
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self dismissViewControllerAnimated:true completion: nil];
         }
