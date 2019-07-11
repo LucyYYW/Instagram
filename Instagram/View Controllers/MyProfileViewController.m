@@ -28,7 +28,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    layout.minimumInteritemSpacing = 2;
+    layout.minimumInteritemSpacing = 1;
     layout.minimumLineSpacing = 2;
     
     CGFloat postersPerLine = 3;

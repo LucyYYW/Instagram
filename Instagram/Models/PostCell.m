@@ -24,6 +24,10 @@
     
 }
 
+- (IBAction)onTapUserProfile:(id)sender {
+    
+}
+
 - (IBAction)onTapDetailsBtn:(id)sender {
     [self.detailDelegate didTapDetailsOnCell:self];
 }
@@ -85,4 +89,7 @@
     self.likeLabel.text = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
     
 }
+
+
+
 @end
