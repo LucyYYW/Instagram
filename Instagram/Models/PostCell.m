@@ -83,12 +83,18 @@
     [self.profileImageView setImageWithURL:url2 placeholderImage:[UIImage imageNamed:@"profilePlaceholder"]];
     
     self.dateLabel.text = [NSString stringWithFormat:@"%@ ago",self.post.createdAt.shortTimeAgoSinceNow];
-    self.likeLabel.text = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
     
     
+    NSString *likeText = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
     if ([self.post.likeCount intValue] > 1) {
-        self.likeLabel.text = [self.likeLabel.text stringByAppendingString:@"s"];
+        likeText = [likeText stringByAppendingString:@"s"];
     }
+    NSString *commentText = [NSString stringWithFormat:@"  %i comment", [self.post.commentCount intValue]];
+    if ([self.post.commentCount intValue] > 1) {
+        commentText = [commentText stringByAppendingString:@"s"];
+    }
+    
+    self.likeLabel.text = [likeText stringByAppendingString:commentText];
         
     
     
