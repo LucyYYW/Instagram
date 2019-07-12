@@ -36,7 +36,21 @@
     self.commentTableView.dataSource = self;
     self.commentTableView.rowHeight = UITableViewAutomaticDimension;
     
+    
+    [self.commentTableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"HeaderViewIdentifier"];
+    
+    
     [self setDetailsView];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"HeaderViewIdentifier"];
+    header.textLabel.text = @"Comments";
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
 }
 
 - (void) setDetailsView {
@@ -128,6 +142,7 @@
 - (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
     [self performSegueWithIdentifier:@"detailToUserProfile" sender:self.post.author];
 }
+
 
 - (void) didGetComment {
     
