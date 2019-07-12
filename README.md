@@ -37,7 +37,9 @@ The following **additional** features are implemented:
 - [x] Allow the logged in user to add bio and edit bio
 - [x] User can comment on a post from the home timeline page as well
 
-- List anything else that you can get done to improve the app functionality!
+List anything else that you can get done to improve the app functionality!
+- [x] Using Section header for the comments table view in the post details page.
+
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
