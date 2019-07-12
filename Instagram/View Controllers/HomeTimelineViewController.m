@@ -267,6 +267,19 @@ InfiniteScrollActivityView* loadingMoreView;
     [self performSegueWithIdentifier:@"homeToUserProfile" sender:user];
 }
 
+
+- (void) didTapComment:(PostCell *) cell{
+    [self performSegueWithIdentifier:@"homeComment" sender:cell];
+}
+
+-(void) didGetComment {
+    [self fetchLatest20Posts];
+    [self.tableView reloadData];
+    
+    
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -288,6 +301,12 @@ InfiniteScrollActivityView* loadingMoreView;
     } else if ([segue.identifier isEqualToString:@"homeToUserProfile"]) {
         OtherProfileViewController *otherController = [segue destinationViewController];
         otherController.user = (PFUser*) sender;
+    } else if ([segue.identifier isEqualToString:@"homeComment"]) {
+        UINavigationController *navigation = [segue destinationViewController];
+        CommentViewController *commentController = (CommentViewController*)navigation.topViewController;
+        PostCell *cell = sender;
+        commentController.post = cell.post;
+        commentController.homeDelegate = self;
     }
 }
 

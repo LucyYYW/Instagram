@@ -70,6 +70,7 @@
 
 
 - (IBAction)onTapComment:(id)sender {
+    [self.delegate didTapComment:self];
 }
 
 - (void) refreshCellView {

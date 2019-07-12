@@ -17,11 +17,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@protocol CommentHomeDelegate
+-(void) didGetComment;
+@end
+
+
 @interface CommentViewController : UIViewController <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *commentTextView;
 @property (strong, nonatomic) Post *post;
 
 @property (nonatomic, weak) id<CommentDetailDelegate> delegate;
+@property (nonatomic, weak) id<CommentHomeDelegate> homeDelegate;
 @end
 
 NS_ASSUME_NONNULL_END

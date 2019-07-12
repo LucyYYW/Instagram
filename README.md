@@ -34,6 +34,8 @@ The following **optional** features are implemented:
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
+- [x] Allow the logged in user to add bio and edit bio
+- [x] User can comment on a post from the home timeline page as well
 
 - [ ] List anything else that you can get done to improve the app functionality!
 

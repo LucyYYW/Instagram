@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol PostCellDelegate
 -(void) didTapDetailsOnCell: (PostCell *) cell;
 -(void) didTapUserProfilePic: (PFUser *) user;
+-(void) didTapComment: (PostCell *) cell;
 @end
 
 NS_ASSUME_NONNULL_END

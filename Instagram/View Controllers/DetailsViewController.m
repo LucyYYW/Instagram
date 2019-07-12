@@ -49,7 +49,17 @@
     
     self.captionLabel.text = self.post.caption;
     
-    self.likeLabel.text = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
+    //self.likeLabel.text = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
+    NSString *likeText = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
+    if ([self.post.likeCount intValue] > 1) {
+        likeText = [likeText stringByAppendingString:@"s"];
+    }
+    NSString *commentText = [NSString stringWithFormat:@"  %i comment", [self.post.commentCount intValue]];
+    if ([self.post.commentCount intValue] > 1) {
+        commentText = [commentText stringByAppendingString:@"s"];
+    }
+    
+    self.likeLabel.text = [likeText stringByAppendingString:commentText];
     
     PFFileObject *userProfileFile = self.post.author[@"profileImage"];
     NSURL *url2 = [NSURL URLWithString:userProfileFile.url];
@@ -59,9 +69,6 @@
         [self.likeButton setImage:[UIImage imageNamed:@"likeWhite.png"] forState:UIControlStateNormal];
     } else {
         [self.likeButton setImage:[UIImage imageNamed:@"likeREd.png"] forState:UIControlStateNormal];
-        if ([self.post.likeCount intValue] > 1) {
-            self.likeLabel.text = [self.likeLabel.text stringByAppendingString:@"s"];
-        }
     }
     
     [self fetchLatest20Comments];
@@ -124,9 +131,6 @@
     //NSLog(@"didGetComment");
     [self fetchLatest20Comments];
     [self.commentTableView reloadData];
-    
-    self.post.commentCount = [NSNumber numberWithInt:[self.post.commentCount intValue] + 1];
-    [self.post saveInBackground];
     
     [self.postCell refreshCellView];
     [self.tableView reloadData];

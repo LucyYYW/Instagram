@@ -35,6 +35,11 @@
 
 
 - (IBAction)onReply:(id)sender {
+    
+    self.post.commentCount = [NSNumber numberWithInt:[self.post.commentCount intValue] + 1];
+    [self.post saveInBackground];
+    
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Comment commentPost:self.post.objectId withText:self.commentTextView.text withCompletion:^(BOOL succeeded, NSError *_Nullable error) {
         if (error != nil) {
@@ -43,7 +48,12 @@
 
         } else {
             NSLog(@"User commented successfully");
-            [self.delegate didGetComment];
+            if (self.delegate) {
+                [self.delegate didGetComment];
+            }
+            if (self.homeDelegate) {
+                [self.homeDelegate didGetComment];
+            }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self dismissViewControllerAnimated:true completion: nil];
         }

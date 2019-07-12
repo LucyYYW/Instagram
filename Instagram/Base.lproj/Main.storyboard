@@ -88,7 +88,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wordlogo" translatesAutoresizingMaskIntoConstraints="NO" id="IMB-u9-Ze0">
-                                <rect key="frame" x="37.5" y="69" width="300.00000000000011" height="129"/>
+                                <rect key="frame" x="37.5" y="125.5" width="300" height="16"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eBx-Cv-fHq">
                                 <rect key="frame" x="75" y="251.5" width="225" height="31"/>
@@ -202,7 +202,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wordlogo" translatesAutoresizingMaskIntoConstraints="NO" id="xSw-GY-hQG">
-                                <rect key="frame" x="37.5" y="69" width="300.00000000000011" height="129"/>
+                                <rect key="frame" x="37.5" y="125.5" width="300" height="16"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kws-NQ-pui">
                                 <rect key="frame" x="75" y="251.5" width="225" height="31"/>
@@ -467,6 +467,7 @@
                         <segue destination="iUT-AW-Plr" kind="modal" identifier="compose" id="ebG-iZ-c0t"/>
                         <segue destination="NNO-Va-jmO" kind="show" identifier="viewDetails" id="Xnc-iA-XhF"/>
                         <segue destination="SON-A0-ttV" kind="show" identifier="homeToUserProfile" id="If6-zu-h19"/>
+                        <segue destination="vyE-hd-TpO" kind="presentation" identifier="homeComment" id="l71-fv-QwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUF-OC-q3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1222,7 +1223,8 @@
         <image name="wordlogo" width="389" height="129"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="njI-es-diP"/>
+        <segue reference="l71-fv-QwP"/>
+        <segue reference="If6-zu-h19"/>
         <segue reference="Xz7-6B-sbd"/>
         <segue reference="rXV-v2-Hqx"/>
     </inferredMetricsTieBreakers>
