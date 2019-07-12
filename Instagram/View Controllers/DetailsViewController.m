@@ -128,7 +128,17 @@
 }
 
 - (void) didGetComment {
-    //NSLog(@"didGetComment");
+    
+    NSString *likeText = [NSString stringWithFormat:@"%i like",[self.post.likeCount intValue]];
+    if ([self.post.likeCount intValue] > 1) {
+        likeText = [likeText stringByAppendingString:@"s"];
+    }
+    NSString *commentText = [NSString stringWithFormat:@"  %i comment", [self.post.commentCount intValue]];
+    if ([self.post.commentCount intValue] > 1) {
+        commentText = [commentText stringByAppendingString:@"s"];
+    }
+    self.likeLabel.text = [likeText stringByAppendingString:commentText];
+    
     [self fetchLatest20Comments];
     [self.commentTableView reloadData];
     
