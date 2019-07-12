@@ -27,14 +27,22 @@
     
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+    
+    
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    
+    
     layout.minimumInteritemSpacing = 1;
-    layout.minimumLineSpacing = 2;
+    layout.minimumLineSpacing = 1;
     
     CGFloat postersPerLine = 3;
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1))/ postersPerLine;
     CGFloat itemHeight = itemWidth;
+     
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+     
+    
+    
     // Do any additional setup after loading the view.
     [self updateUser];
     
@@ -100,6 +108,7 @@
 - (void) didEditProfilewithImage: (UIImage* ) image{
     [self.profileImageView setImage:image];
 }
+
 
 
 #pragma mark - Navigation

@@ -117,6 +117,9 @@
     //NSLog(@"didGetComment");
     [self fetchLatest20Comments];
     [self.commentTableView reloadData];
+    
+    self.post.commentCount = [NSNumber numberWithInt:[self.post.commentCount intValue] + 1];
+    [self.post saveInBackground];
 }
 
 - (void) fetchLatest20Comments {

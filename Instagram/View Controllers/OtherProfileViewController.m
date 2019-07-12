@@ -30,7 +30,7 @@
     self.collectionView.delegate = self;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     layout.minimumInteritemSpacing = 1;
-    layout.minimumLineSpacing = 2;
+    layout.minimumLineSpacing = 1;
     
     CGFloat postersPerLine = 3;
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumInteritemSpacing * (postersPerLine - 1))/ postersPerLine;
